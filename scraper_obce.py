@@ -76,7 +76,7 @@ while True:
         print(kraje[kraj])
         kr_data = []
         now = str(datetime.datetime.utcnow().isoformat()) + 'Z'
-        r = requests.get(endpoint + '/pls/prezmedia/vysledky_kraj?kolo=&nuts=' + kraj)
+        r = requests.get(endpoint + '/vysledky_kraj?kolo=&nuts=' + kraj)
         root = ET.fromstring(r.text)
         for okres in root[0].findall(ns + 'OKRES'):    
             for obec in okres.findall(ns + 'OBEC'):

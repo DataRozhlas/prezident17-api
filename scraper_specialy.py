@@ -40,14 +40,14 @@ kraje = {
 
 kandidati = {
     '1': 'Mirek Topolánek',
-    #'2': 'Michal Horáček',
-    #'3': 'Pavel Fischer',
-    #'4': 'Jiří Hynek',
-    #'5': 'Petr Hannig',
-    #'6': 'Vratislav Kulhánek',
+    '2': 'Michal Horáček',
+    '3': 'Pavel Fischer',
+    '4': 'Jiří Hynek',
+    '5': 'Petr Hannig',
+    '6': 'Vratislav Kulhánek',
     '7': 'Miloš Zeman',
-    #'8': 'Marek Hilšer',
-    #'9': 'Jiří Drahoš'
+    '8': 'Marek Hilšer',
+    '9': 'Jiří Drahoš'
 }
 
 
@@ -67,7 +67,7 @@ while True:
         print(kraje[kraj])
         kr_data = []
         now = str(datetime.datetime.utcnow().isoformat()) + 'Z'
-        r = requests.get(endpoint + '/pls/prezmedia/vysledky_kraj?kolo=&nuts=' + kraj)
+        r = requests.get(endpoint + '/vysledky_kraj?kolo=' + kolo + '&nuts=' + kraj)
         root = ET.fromstring(r.text)
         for okres in root[0].findall(ns + 'OKRES'):    
             for obec in okres.findall(ns + 'OBEC'):

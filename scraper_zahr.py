@@ -39,7 +39,7 @@ kandidati = {
 while True:
     now = str(datetime.datetime.utcnow().isoformat()) + 'Z'
     print(now)
-    r = requests.get(endpoint + '/pls/prezmedia/vysledky_zahranici?kolo=')
+    r = requests.get(endpoint + '/vysledky_zahranici?kolo=' + kolo)
     root = ET.fromstring(r.text)
 
     data = {'UPDATED': now}

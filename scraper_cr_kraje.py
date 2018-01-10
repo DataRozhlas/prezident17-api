@@ -59,7 +59,7 @@ kraj_cis = {
 while True:
     now = str(datetime.datetime.utcnow().isoformat()) + 'Z'
     print(now)
-    r = requests.get(endpoint + '/pls/prez2018/vysledky_krajmesta')
+    r = requests.get(endpoint + '/vysledky_krajmesta')
     root = ET.fromstring(r.text)
 
     data = {'UPDATED': now}
@@ -97,10 +97,10 @@ while True:
     
         
     #celá ČR
-    r = requests.get(endpoint + '/pls/prez2018/vysledky')
+    r = requests.get(endpoint + '/vysledky')
     root = ET.fromstring(r.text)
     
-    out = {'99': root.find(ns + 'CR').findall(ns + 'UCAST')[1].attrib}
+    out = {'99': root.find(ns + 'CR').findall(ns + 'UCAST')[0].attrib}
     out['99'].update({'NAZ_KRAJ': 'ČR', 'KAND': {}})
     
     for kn in root.find(ns + 'CR').findall(ns + 'KANDIDAT'):
@@ -112,7 +112,7 @@ while True:
     data.update(out)
     
     #zahr celkem
-    r = requests.get(endpoint + '/pls/prez2018/vysledky_zahranici')
+    r = requests.get(endpoint + '/vysledky_zahranici')
     root = ET.fromstring(r.text)
     
     out = {}
